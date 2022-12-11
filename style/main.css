@@ -44,9 +44,15 @@ body{
 }
 
 .clock-area ul li #icon{
-    width: 13px;
-    height: 13px;
+    width: 20px;
+    height: 20px;
     background-size: cover;
     background-position: center;
     
+}
+
+@media screen and (max-width: 768px){
+    .clock-area #time{
+        font-size: 55pt;
+    }
 }

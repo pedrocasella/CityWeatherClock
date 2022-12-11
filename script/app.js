@@ -86,12 +86,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         dataText.innerText = data
     }, 1000*1)
 
-
-
-
+    
 })
 
-    //Exibe informações na tela
+    //show date in display
 
     const viewWeather = async() => {
         const data = await getWeather();
@@ -110,3 +108,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
     setInterval(viewWeather, 1000*11)
     setTimeout(viewWeather, 1000*1)
 
+    //loading image of your locate
+
+    async function searchImage(){
+
+        const imageUrl = 'https://pixabay.com/api/?key=31983115-d97d5a6a0252325048edde80f&q='+ localStorage.getItem('city') +'&image_type=photo'
+        const imageSelector = await fetch(imageUrl)
+        
+        const result =  await imageSelector.json()
+
+        return result;
+    }
+
+
+    const fillBackground = async() => {
+        const dataImg = await searchImage()
+        const bckgrd = document.getElementById('background')
+
+        console.log(dataImg.hits[0].largeImageURL)
+        bckgrd.style.backgroundImage = 'url(' + dataImg.hits[0].largeImageURL + ')'
+
+
+    }
+setInterval(searchImage, 1000*1)
+setInterval(fillBackground, 1000*1)
