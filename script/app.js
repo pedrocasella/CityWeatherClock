@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const desc = document.getElementById('description')
         const icon = document.getElementById('icon')
 
-        icon.style.backgroundImage = 'url(' + 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png)'
+        icon.style.backgroundImage = 'url(' + 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png)'
         city.innerHTML = localStorage.getItem("city") + " - " + data.sys.country
         temp.innerText = parseInt(data.main.temp) + "°C"
         desc.innerText = data.weather[0].description
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     async function searchImage(){
 
-        const imageUrl = 'https://pixabay.com/api/?key=31983115-d97d5a6a0252325048edde80f&q='+ localStorage.getItem('city') +'&image_type=photo'
+        const imageUrl = 'https://pixabay.com/api/?key=31983115-d97d5a6a0252325048edde80f&q='+ localStorage.getItem('city').replaceAll(" ", "+") + '&image_type=photo'
         const imageSelector = await fetch(imageUrl)
         
         const result =  await imageSelector.json()
@@ -124,11 +124,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const fillBackground = async() => {
         const dataImg = await searchImage()
         const bckgrd = document.getElementById('background')
-
-        console.log(dataImg.hits[0].largeImageURL)
         bckgrd.style.backgroundImage = 'url(' + dataImg.hits[0].largeImageURL + ')'
-
-
     }
 setInterval(searchImage, 1000*1)
 setInterval(fillBackground, 1000*1)
+
