@@ -32,7 +32,7 @@ API consumida para, através das coordenadas obtidas com a WebAPI Navigator.geol
 [LocationIQ - Site](https://locationiq.com/)
 
 ## Pixabay API
-API utilizda para obter e exibir imagem da localização do usuário através do nome do local.<br><br>
+API utilizada para obter e exibir imagem da localização do usuário através do nome do local.<br><br>
 [Documentação da Pixabay](https://pixabay.com/api/docs//)
 
 
